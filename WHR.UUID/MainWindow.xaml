@@ -1,0 +1,48 @@
+﻿<Metro:MetroWindow x:Class="WHR.UUID.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WHR.UUID"
+        xmlns:Metro="WHR"
+        mc:Ignorable="d"
+        Title="{Binding Title}" Height="550" Width="400" ResizeMode="CanMinimize">
+    <Metro:MetroWindow.Menu>
+        <Metro:MetroTitleMenu>
+            <Metro:MetroTitleMenuItem Header="Обновить" Click="MetroTitleMenuItem_Click" />
+        </Metro:MetroTitleMenu>
+    </Metro:MetroWindow.Menu>
+    <Metro:MetroWindow.DataContext>
+        <local:MainWindow_Model BtnEnabled="True" Title="WHR.UUID - v 20.7"/>
+    </Metro:MetroWindow.DataContext>
+    <Metro:MetroWindow.Resources>
+        <Metro:MetroContextMenu x:Key="SharedContextMenu">
+            <Metro:MetroMenuItem Header="Копировать все" Click="MetroMenuCopy_Click"/>
+            <Metro:MetroMenuItem Header="Вставить" Click="MetroMenuPaste_Click" />
+        </Metro:MetroContextMenu>
+    </Metro:MetroWindow.Resources>
+    <Border Padding="10">
+        <Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="500"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Grid.Column="0">
+                    <Metro:MetroTextBox x:Name="TB1" TextWrapping="Wrap" Height="40" Width="220" HorizontalAlignment="Left" InputHint="Version 1 UUID" ContextMenu="{DynamicResource SharedContextMenu}" PreviewTextInput="TB1_PreviewTextInput" />
+                </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="1">
+                    <Metro:MetroSwitch x:Name="MS1" Content="Version 4 UUID" Width="150"  Margin="0,5,0,0" Checked="MS1_Checked" Unchecked="MS1_Unchecked"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                    <Metro:MetroTextBox x:Name="TB2" TextWrapping="Wrap" Height="390" InputHint="Список UUID" ContextMenu="{DynamicResource SharedContextMenu}"/>
+                    <Metro:MetroButton x:Name="BT1" Content="Сгенерировать" Margin="0,10,0,0" Height="40" Click="BT1_Click"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Metro:MetroWindow>

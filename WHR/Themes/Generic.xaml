@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/WHR;component/Controls/MetroWindow.xaml" />
+        <ResourceDictionary Source="/WHR;component/Controls/MetroButton.xaml" />
+        <ResourceDictionary Source="/WHR;component/Controls/MetroTextButton.xaml" />
+        <ResourceDictionary Source="/WHR;component/Controls/MetroFocusButton.xaml" />
+        <ResourceDictionary Source="/WHR;component/Controls/MetroTextBox.xaml" />
+        <ResourceDictionary Source="/WHR;component/Controls/MetroTabControl.xaml" />
+        <ResourceDictionary Source="/WHR;component/Controls/MetroTextBlock.xaml" />
+        <ResourceDictionary Source="/WHR;component/Controls/MetroTabItem.xaml" />
+        <ResourceDictionary Source="/WHR;component/Controls/MetroSwitch.xaml" />
+        <ResourceDictionary Source="/WHR;component/Controls/MetroGroupBox.xaml" />
+        <ResourceDictionary Source="/WHR;component/Controls/MetroWaterfallFlow.xaml" />
+        <ResourceDictionary Source="/WHR;component/Controls/MetroMenuTabItem.xaml" />
+        <ResourceDictionary Source="/WHR;component/Controls/MetroMenuTabControl.xaml" />
+        <ResourceDictionary Source="/WHR;component/Controls/MetroTitleMenu.xaml" />
+        <ResourceDictionary Source="/WHR;component/Controls/MetroTitleMenuItem.xaml" />
+        <ResourceDictionary Source="/WHR;component/Controls/MetroMenuItem.xaml" />
+        <ResourceDictionary Source="/WHR;component/Controls/MetroMenuSeparator.xaml" />
+        <ResourceDictionary Source="/WHR;component/Controls/MetroContextMenu.xaml" />
+        <ResourceDictionary Source="/WHR;component/Controls/MetroScrollViewer.xaml" />
+        <ResourceDictionary Source="/WHR;component/Controls/MetroComboBox.xaml" />
+        <ResourceDictionary Source="/WHR;component/Controls/MetroComboBoxItem.xaml" />
+        <ResourceDictionary Source="/WHR;component/Controls/MetroVisualElement.xaml" />
+        <ResourceDictionary Source="/WHR;component/Controls/MetroProgressBar.xaml" />
+        <ResourceDictionary Source="/WHR;component/Controls/MetroRichTextBox.xaml" />
+        <ResourceDictionary Source="/WHR;component/Controls/MetroImage.xaml" />
+        <ResourceDictionary Source="/WHR;component/Controls/MetroExpander.xaml" />
+        <ResourceDictionary Source="/WHR;component/Controls/MetroCanvasGrid.xaml" />
+        <ResourceDictionary Source="/WHR;component/Controls/MetroPath.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>
