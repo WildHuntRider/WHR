@@ -12,7 +12,7 @@
         </Metro:MetroTitleMenu>
     </Metro:MetroWindow.Menu>
     <Metro:MetroWindow.DataContext>
-        <local:MainWindow_Model BtnEnabled="True" Title="WHR.XML - v 20.7"/>
+        <local:MainWindow_Model BtnEnabled="True" Title="WHR.XML - v 20.8"/>
     </Metro:MetroWindow.DataContext>
     <Metro:MetroWindow.Resources>
         <Metro:MetroContextMenu x:Key="SharedContextMenu">

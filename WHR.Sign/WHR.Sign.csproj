@@ -6,8 +6,8 @@
     <UseWPF>true</UseWPF>
     <UseWindowsForms>False</UseWindowsForms>
     <ApplicationIcon>WHR.ico</ApplicationIcon>
-    <AssemblyVersion>20.7</AssemblyVersion>
-    <FileVersion>20.7</FileVersion>
+    <AssemblyVersion>20.8</AssemblyVersion>
+    <FileVersion>20.8</FileVersion>
   </PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net480|AnyCPU'">
 		<PlatformTarget>AnyCPU</PlatformTarget>
