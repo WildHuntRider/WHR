@@ -878,7 +878,7 @@ namespace WHR.XML
         void Signs_Click(object s, RoutedEventArgs e)
         {
             string signedXml = textBox20.Text;
-            string phd = SignsCb.SelectionBoxItem.ToString();
+            string phd = SignsCb1.SelectionBoxItem.ToString();
             Task.Run(() =>
             {
                 signedXml = signer.SignedXml(signedXml, phd);

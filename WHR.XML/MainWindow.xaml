@@ -21,7 +21,7 @@
         </Metro:MetroContextMenu>
     </Metro:MetroWindow.Resources>
     <Metro:MetroMenuTabControl x:Name="tab" IconMode="True">
-        <Metro:MetroMenuTabItem Header="Поставщик/Потребитель" Icon="Resources/documentIcon.png" IconMove="Resources/documentIconMove.png" MinWidth="40" Width="200" IsSelected="True" >
+        <Metro:MetroMenuTabItem Header="Потребитель/Поставщик" Icon="Resources/documentIcon.png" IconMove="Resources/documentIconMove.png" MinWidth="40" Width="200" IsSelected="True" >
             <Border Padding="10">
                 <StackPanel>
                     <Grid>
@@ -120,7 +120,7 @@
                                             <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
                                         <StackPanel Margin="0 2 0 0">
-                                            <Metro:MetroTextBox x:Name="textBox5" Height="300" Margin="0 10 0 0" AcceptsReturn="True" TextWrapping="Wrap" ContextMenu="{DynamicResource SharedContextMenu}" ButtonTitle="Отправить запрос" ButtonClick="textBox5_ButtonClick"/>
+                                            <Metro:MetroTextBox x:Name="textBox5" Height="300" Margin="0 10 0 0" AcceptsReturn="True" TextWrapping="Wrap" ContextMenu="{DynamicResource SharedContextMenu}" ButtonTitle="Отправить запрос" ButtonClick="textBox5_ButtonClick" State="sdfsdf"/>
                                             <Metro:MetroTextBox x:Name="textBox6" Height="300" Margin="0 10 0 0" AcceptsReturn="True" TextWrapping="Wrap" TextChanged="textBox6Change" VerticalAlignment="Bottom" ContextMenu="{DynamicResource SharedContextMenu}"/>
                                         </StackPanel>
                                     </Grid>
