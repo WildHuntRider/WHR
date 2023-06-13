@@ -13,7 +13,7 @@
         </Metro:MetroTitleMenu>
     </Metro:MetroWindow.Menu>
     <Metro:MetroWindow.DataContext>
-        <local:MainWindow_Model BtnEnabled="True" Title="WHR.UUID - v 20.8"/>
+        <local:MainWindow_Model BtnEnabled="True" Title="WHR.UUID - v 20.9"/>
     </Metro:MetroWindow.DataContext>
     <Metro:MetroWindow.Resources>
         <Metro:MetroContextMenu x:Key="SharedContextMenu">

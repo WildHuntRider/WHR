@@ -6,8 +6,8 @@
     <UseWPF>true</UseWPF>
     <NoWin32Manifest>true</NoWin32Manifest>
 	        <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
-        <AssemblyVersion>20.8</AssemblyVersion>
-        <FileVersion>20.8</FileVersion>
+        <AssemblyVersion>20.9</AssemblyVersion>
+        <FileVersion>20.9</FileVersion>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <ApplicationIcon>WHR.ico</ApplicationIcon>
   </PropertyGroup>
