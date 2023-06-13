@@ -5,7 +5,7 @@
     xmlns:Metro="WHR"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
     x:Class="WHR.XML.MainWindow"
-    Title="{Binding Title}" Width="1400" Height="715" ResizeMode="CanMinimize" Initialized="MetroWindow_Initialized" KeyDown="MetroWindow_KeyDown">
+    Title="{Binding Title}" Width="1400" Height="715" ResizeMode="CanMinimize" Initialized="MetroWindow_Initialized" KeyDown="MetroWindow_KeyDown" WindowStartupLocation="CenterScreen">
     <Metro:MetroWindow.Menu>
         <Metro:MetroTitleMenu>
             <Metro:MetroTitleMenuItem Header="Обновить" Icon="Resources/arrowIcon.png" Click="MetroTitleMenuItem_Click" />
@@ -191,6 +191,7 @@
                 </StackPanel>
             </Border>
         </Metro:MetroMenuTabItem>
+
         <Metro:MetroMenuTabItem x:Name="Sign" Header="Подписание файлов" Icon="Resources/signatureIcon.png" IconMove="Resources/signatureIconMove.png" MinWidth="40" Width="200" IsSelected="True">
             <Border Padding="10">
                 <Grid>
