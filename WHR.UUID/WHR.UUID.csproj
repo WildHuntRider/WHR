@@ -27,6 +27,6 @@
     <ProjectReference Include="..\WHR\WHR.csproj" />
   </ItemGroup>
 	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-	  <Exec Command="tasklist /fi &quot;imagename eq WHR.XML.exe&quot; |find &quot;:&quot; &gt; nul &amp; if errorlevel 1 taskkill /f /im &quot;WHR.XML.exe&quot;" />
+	  <Exec Command="tasklist /fi &quot;imagename eq WHR.UUID.exe&quot; |find &quot;:&quot; &gt; nul &amp; if errorlevel 1 taskkill /f /im &quot;WHR.UUID.exe&quot;" />
 	</Target>
 </Project>

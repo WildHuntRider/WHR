@@ -15,6 +15,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Xml;
 using System.Xml.Linq;
+using System.Windows.Controls.Primitives;
 using WHR.Controls;
 using WHR.Utility.Update;
 using WHR.XML.Utility;
@@ -64,14 +65,17 @@ namespace WHR.XML
 
         private void MetroWindow_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
+            if(((char)e.Key) == (char)Key.F1)
+            {
+
+            }
             if (((char)e.Key) == (char)Key.F5)
             {
-                if (SignsCb.Items.Count == 0)
-                {
                     SignsCb1.Items.Clear();
+                    SignsCb1.SelectedIndex = 0;
                     SignsCb.Items.Clear();
+                    SignsCb.SelectedIndex = 0;
                     List<string> phdNames = new List<string>(); Task.Run(() => { phdGetter.GetPHDs().ForEach(Action => phdNames.Add(Action)); }).ContinueWith(Action => { phdNames.ForEach(a => SignsCb.Items.Add(a)); phdNames.ForEach(a => SignsCb1.Items.Add(a)); }, TaskScheduler.FromCurrentSynchronizationContext());
-                }
             }
         }
         void ProcessXml(TextBox input, TextBox output, ISMEV.SOAPOperation operation)
@@ -99,6 +103,11 @@ namespace WHR.XML
         {
             Update versionUpdater = new Update();
             versionUpdater.CheckAndUpdateVersionWHRXML(exename, exepath, curver);
+        }
+        private void MMI1_Click(object sender, RoutedEventArgs e)
+        {
+            UUID windowA = new UUID();
+            windowA.Show();
         }
         void MetroMenuCopy_Click(object s, RoutedEventArgs e)
         {
@@ -177,7 +186,7 @@ namespace WHR.XML
             if (testPotrebitel.IsChecked == false)
             {
                 nameFolder = textBox6.Text;
-                filenames = new string[] { "1)GetRequestRequest.xml", "1)GetRequestResponse.xml", "2)AсkRequest.xml", "2)AсkResponse.xml", "3)SendResponseRequest.xml", "3)SendResponseResponse.xml" };
+                filenames = new string[] { "1)GetRequestRequest.xml", "1)GetResponseRequest.xml", "2)AсkRequest.xml", "2)AсkResponse.xml", "3)SendResponseRequest.xml", "3)SendResponseResponse.xml" };
                 tbshka = new string[] { textBox5.Text, textBox6.Text, textBox7.Text, textBox8.Text, textBox9.Text, textBox10.Text };
             }
             else
@@ -510,13 +519,13 @@ namespace WHR.XML
         {
             if (etalonsDownload.IsChecked == true)
             {
-                textBox1.Visibility = Visibility.Visible;
+                textBox1.IsReadOnly = false;
                 Rectangle1.Visibility = Visibility.Collapsed;
                 TextBlock1.Visibility = Visibility.Collapsed;
             }
             else
             {
-                textBox1.Visibility = Visibility.Collapsed;
+                textBox1.IsReadOnly = true;
                 Rectangle1.Visibility = Visibility.Visible;
                 TextBlock1.Visibility = Visibility.Visible;
             }
@@ -811,7 +820,6 @@ namespace WHR.XML
         private void RefreshJavaVersions()
         {
             JavaVersion.Items.Clear();
-
             string[] javaPaths = new string[] { @"C:\Program Files\Java\", @"C:\Program Files (x86)\Java\" };
 
             foreach (string javaPath in javaPaths)
@@ -823,6 +831,7 @@ namespace WHR.XML
                     {
                         JavaVersion.Items.Remove(folder);
                         JavaVersion.Items.Add(folder);
+                        JavaVersion.SelectedIndex = 0;
                     }
                 }
             }
@@ -890,15 +899,15 @@ namespace WHR.XML
         void RequestButton_Click(object s, EventArgs e)
         {
             if (GetRequestRequest1.IsChecked == true)
-                ProcessXml(textBox20, textBox20, ISMEV.SOAPOperation.GET_REQUEST);
+                ProcessXml(textBox20, textBox21, ISMEV.SOAPOperation.GET_REQUEST);
             else if (SendRequestRequest1.IsChecked == true)
-                ProcessXml(textBox20, textBox20, ISMEV.SOAPOperation.SEND_REQUEST);
+                ProcessXml(textBox20, textBox21, ISMEV.SOAPOperation.SEND_REQUEST);
             else if (GetResponseRequest1.IsChecked == true)
-                ProcessXml(textBox20, textBox20, ISMEV.SOAPOperation.GET_RESPONSE);
+                ProcessXml(textBox20, textBox21, ISMEV.SOAPOperation.GET_RESPONSE);
             else if (SendResponseRequest1.IsChecked == true)
-                ProcessXml(textBox20, textBox20, ISMEV.SOAPOperation.SEND_RESPONSE);
+                ProcessXml(textBox20, textBox21, ISMEV.SOAPOperation.SEND_RESPONSE);
             else if (AckRequest1.IsChecked == true)
-                ProcessXml(textBox20, textBox20, ISMEV.SOAPOperation.ACK);
+                ProcessXml(textBox20, textBox21, ISMEV.SOAPOperation.ACK);
         }
 
         void RequestOption_Click(object s, RoutedEventArgs e)

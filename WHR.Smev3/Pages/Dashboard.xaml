@@ -1,0 +1,167 @@
+﻿<Page
+    x:Class="WHR.Smev3.Pages.Dashboard"
+   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+   xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+   xmlns:local="clr-namespace:WHR.Smev3.Pages"
+   xmlns:Metro="WHR"
+   mc:Ignorable="d" 
+   d:DesignHeight="715" d:DesignWidth="1400"
+   Title="Dashboard">
+
+
+    <Border CornerRadius="5" Background="{DynamicResource PrimaryBackgroundColor}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="106.66"/>
+                <ColumnDefinition Width="106.66"/>
+                <ColumnDefinition Width="106.66"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Metro:MetroTextBox x:Name="textBox1" TextWrapping="Wrap" Height="40" InputHint="Ссылка на вид сведений"
+            Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"/>
+            <Metro:MetroTextBox x:Name="textBox2" TextWrapping="Wrap" Height="40" InputHint="Введите: URL"
+            Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"/>
+            <Metro:MetroTextBox x:Name="textBox3" TextWrapping="Wrap" Height="40" InputHint="Введите: RootElement"
+            Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"/>
+            <Metro:MetroTextBox x:Name="textBox4" TextWrapping="Wrap" Height="40" Text="Timestamp" IsReadOnly="True"
+            Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"/>
+            <ComboBox x:Name="SignsCb" Height="40" SelectedIndex="0" Foreground="#A5000000"
+       Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"/>
+            <Metro:MetroButton x:Name="parsing" Content="Спарсить" Height="40" HorizontalAlignment="Left"
+            Grid.Row="5" Grid.Column="0"/>
+            <Metro:MetroButton x:Name="btnPodpis" Content="Подписать" Height="40" HorizontalAlignment="Center"
+            Grid.Row="5" Grid.Column="1"/>
+            <Metro:MetroButton x:Name="btnSaveFile" Content="Сохранить" Height="40" HorizontalAlignment="Right"
+            Grid.Row="5" Grid.Column="2"/>
+
+            <Metro:MetroGroupBox Header="Настройки" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3">
+                <StackPanel>
+                    <CheckBox x:Name="etalonsDownload" Content="Скачать эталоны" IsChecked="True" />
+                    <CheckBox x:Name="testPotrebitel" Content="Тестирование в качестве Поставщика"/>
+                </StackPanel>
+            </Metro:MetroGroupBox>
+            <Metro:MetroTextBlock x:Name="exist_request" TextWrapping="Wrap" FlowDirection="LeftToRight" TextAlignment="Left" 
+      Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3"/>
+
+            <Metro:MetroTabControl SelectedIndex="1" Grid.Row="0" Grid.Column="4" Grid.RowSpan="9">
+                <Metro:MetroTabItem x:Name="GetRequestRequest_" Header="GetRequestRequest" IsSelected="True">
+                    <StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="300"/>
+                                <RowDefinition Height="10"/>
+                            </Grid.RowDefinitions>
+                            <Metro:MetroTextBox x:Name="textBox5" AcceptsReturn="True" TextWrapping="Wrap" ButtonTitle="Отправить запрос" Grid.Row="0"/>
+                        </Grid>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="300"/>
+                            </Grid.RowDefinitions>
+                            <Metro:MetroTextBox x:Name="textBox6" AcceptsReturn="True" TextWrapping="Wrap" Grid.Row="1"/>
+                        </Grid>
+                    </StackPanel>
+                </Metro:MetroTabItem>
+                <Metro:MetroTabItem x:Name="AckRequest_" Header="AckRequest">
+                    <StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="300"/>
+                                <RowDefinition Height="10"/>
+                            </Grid.RowDefinitions>
+                            <Metro:MetroTextBox x:Name="textBox7" AcceptsReturn="True" TextWrapping="Wrap" Grid.Row="0"/>
+                        </Grid>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="300"/>
+                            </Grid.RowDefinitions>
+                            <Metro:MetroTextBox x:Name="textBox8" AcceptsReturn="True" TextWrapping="Wrap" Grid.Row="1"/>
+                        </Grid>
+                    </StackPanel>
+                </Metro:MetroTabItem>
+                <Metro:MetroTabItem x:Name="SendResponseRequest_" Header="SendResponseRequest">
+                    <StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="300"/>
+                                <RowDefinition Height="10"/>
+                            </Grid.RowDefinitions>
+                            <Metro:MetroTextBox x:Name="textBox9" AcceptsReturn="True" TextWrapping="Wrap" ButtonTitle="Отправить запрос"/>
+                        </Grid>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="300"/>
+                            </Grid.RowDefinitions>
+                            <Metro:MetroTextBox x:Name="textBox10" AcceptsReturn="True" TextWrapping="Wrap" Grid.Row="1"/>
+                        </Grid>
+                    </StackPanel>
+                </Metro:MetroTabItem>
+                <Metro:MetroTabItem x:Name="SendRequestRequest_" Header="SendRequestRequest" Visibility="Collapsed">
+                    <StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="300"/>
+                                <RowDefinition Height="10"/>
+                            </Grid.RowDefinitions>
+                            <Metro:MetroTextBox x:Name="textBox11" AcceptsReturn="True" TextWrapping="Wrap"  ButtonTitle="Отправить запрос"/>
+                        </Grid>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="300"/>
+                            </Grid.RowDefinitions>
+                            <Metro:MetroTextBox x:Name="textBox12" AcceptsReturn="True" TextWrapping="Wrap" Grid.Row="1"/>
+                        </Grid>
+                    </StackPanel>
+                </Metro:MetroTabItem>
+                <Metro:MetroTabItem x:Name="GetResponseRequest_" Header="GetResponseRequest" Visibility="Collapsed">
+                    <StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="300"/>
+                                <RowDefinition Height="10"/>
+                            </Grid.RowDefinitions>
+                            <Metro:MetroTextBox x:Name="textBox13" AcceptsReturn="True" TextWrapping="Wrap"  ButtonTitle="Отправить запрос"/>
+                        </Grid>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="300"/>
+                            </Grid.RowDefinitions>
+                            <Metro:MetroTextBox x:Name="textBox14" AcceptsReturn="True" TextWrapping="Wrap" Grid.Row="1"/>
+                        </Grid>
+                    </StackPanel>
+                </Metro:MetroTabItem>
+                <Metro:MetroTabItem x:Name="AckRequestO_" Header="AckRequest" Visibility="Collapsed">
+                    <StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="300"/>
+                                <RowDefinition Height="10"/>
+                            </Grid.RowDefinitions>
+                            <Metro:MetroTextBox x:Name="textBox15" AcceptsReturn="True" TextWrapping="Wrap"  ButtonTitle="Отправить запрос"/>
+                        </Grid>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="300"/>
+                            </Grid.RowDefinitions>
+                            <Metro:MetroTextBox x:Name="textBox16" AcceptsReturn="True" TextWrapping="Wrap" Grid.Row="1"/>
+                        </Grid>
+                    </StackPanel>
+                </Metro:MetroTabItem>
+            </Metro:MetroTabControl>
+        </Grid>
+    </Border>
+</Page>

@@ -31,9 +31,9 @@
                             <Polyline Grid.Column="2" Points="0,0 5,5 10,0" Stroke="#ffffff" VerticalAlignment="Center"  Margin="0,0,10,0" />
                         </Grid>
                         <Rectangle Grid.Column="3" Fill="#ffffff" Opacity="0.2" Height="12" />
-                        <Popup x:Name="PART_Popup" AllowsTransparency="True" Focusable="False" HorizontalOffset="-20" VerticalOffset="-10" IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="Fade" Placement="Bottom">
+                        <Popup x:Name="PART_Popup" AllowsTransparency="True" Focusable="False" HorizontalOffset="20" VerticalOffset="-10" IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="Fade" Placement="Bottom">
                             <Grid RenderOptions.ClearTypeHint="Enabled" Background="#00000000">
-                                <Border Grid.Row="1" BorderBrush="#99FFFFFF" BorderThickness="1" Background="{TemplateBinding Background}" CornerRadius="3" Margin="20">
+                                <Border Grid.Row="1" BorderBrush="#99FFFFFF" BorderThickness="1" Background="{TemplateBinding Background}" CornerRadius="3" Margin="15">
                                     <Border.Effect>
                                         <DropShadowEffect BlurRadius="20" Direction="0" Opacity="0.2" ShadowDepth="0" />
                                     </Border.Effect>
