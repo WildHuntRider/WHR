@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "WHR.UUID": {
-      "commandName": "Project",
-      "commandLineArgs": "tasklist /fi \"imagename eq WHR.UUID.exe\" |find \":\" > nul & if errorlevel 1 taskkill /f /im \"WHR.UUID.exe\""
-    }
-  }
-}
