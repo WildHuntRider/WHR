@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+    <PropertyGroup>
+        <TargetFrameworks>net480</TargetFrameworks>
+        <LangVersion>latest</LangVersion>
+        <UseWPF>true</UseWPF>
+        <OutputType>WinExe</OutputType>
+        <StartupObject>WHR.XML.App</StartupObject>
+        <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+        <AssemblyVersion>21.2</AssemblyVersion>
+        <FileVersion>21.2</FileVersion>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <ApplicationIcon>Resources\WHR.ico</ApplicationIcon>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\WHR\WHR.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <Resource Include="Resources\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="Resources\WHR.ico" />
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="Costura.Fody" Version="5.7.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
+	<ItemGroup>
+	  <Reference Include="System.IO.Compression" />
+	  <Reference Include="System.Net.Http" />
+	</ItemGroup>
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+	  <Exec Command="tasklist /fi &quot;imagename eq WHR.XML.exe&quot; |find &quot;:&quot; &gt; nul &amp; if errorlevel 1 taskkill /f /im &quot;WHR.XML.exe&quot;" />
+	</Target>
+</Project>

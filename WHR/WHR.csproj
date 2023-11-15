@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+    <PropertyGroup>
+        <TargetFrameworks>net480</TargetFrameworks>
+        <LangVersion>latest</LangVersion>
+        <UseWPF>true</UseWPF>
+        <UseWindowsForms>true</UseWindowsForms>
+        <AssemblyVersion></AssemblyVersion>
+        <FileVersion></FileVersion>
+    </PropertyGroup>
+</Project>

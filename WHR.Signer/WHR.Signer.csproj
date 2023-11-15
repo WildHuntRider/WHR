@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net480</TargetFramework>
+    <ApplicationIcon>bin\Debug\net480\WHR.ico</ApplicationIcon>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Debug\net480\WHR.ico" />
+  </ItemGroup>
+
+</Project>

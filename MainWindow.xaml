@@ -1,0 +1,300 @@
+﻿<Metro:MetroWindow 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:WHR.XML"
+     xmlns:WHROpenLink="clr-namespace:WHR.Utility.Commands;assembly=WHR"
+    xmlns:Metro="WHR"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+    x:Class="WHR.XML.MainWindow"
+    Title="{Binding Title}" Width="1400" Height="715" ResizeMode="CanMinimize" Initialized="MetroWindow_Initialized" KeyDown="MetroWindow_KeyDown">
+    <Metro:MetroWindow.Menu>
+        <Metro:MetroTitleMenu>
+            <Metro:MetroTitleMenuItem Header="ЛК УВ" Command="WHROpenLink:OpenLinkCommand.OpenLink" CommandParameter="https://lkuv.gosuslugi.ru/paip-portal/#/main"/>
+            <Metro:MetroTitleMenuItem Header="Обновить" Icon="Resources/arrowIcon.png" Click="MetroTitleMenuItem_Click" />
+            <Metro:MetroTitleMenuItem Header="Инструменты" >
+                <Metro:MetroMenuItem x:Name="MMI1" Header="UUID Генератор" Click="MMI1_Click" />
+            </Metro:MetroTitleMenuItem>
+        </Metro:MetroTitleMenu>
+    </Metro:MetroWindow.Menu>
+    <Metro:MetroWindow.DataContext>
+        <local:MainWindow_Model BtnEnabled="True" Title="WHR.XML - v 21.0"/>
+    </Metro:MetroWindow.DataContext>
+    <Metro:MetroWindow.Resources>
+        <Metro:MetroContextMenu x:Key="SharedContextMenu">
+            <Metro:MetroMenuItem Header="Копировать все" Click="MetroMenuCopy_Click"/>
+            <Metro:MetroMenuItem Header="Вставить" Click="MetroMenuPaste_Click" />
+        </Metro:MetroContextMenu>
+    </Metro:MetroWindow.Resources>
+    <Metro:MetroMenuTabControl x:Name="tab" IconMode="True">
+        <Metro:MetroMenuTabItem x:Name="TestVS" Header="Потребитель/Поставщик" Icon="Resources/documentIcon.png" IconMove="Resources/documentIconMove.png" MinWidth="40" Width="200" IsSelected="True" >
+            <Border Padding="10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="106.66"/>
+                        <ColumnDefinition Width="106.66"/>
+                        <ColumnDefinition Width="106.66"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="78"/>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="230"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Metro:MetroTextBox x:Name="textBox1" TextWrapping="Wrap"  Height="40" InputHint="Ссылка на вид сведений" ContextMenu="{DynamicResource SharedContextMenu}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"/>
+                    <Metro:MetroTextBox x:Name="textBox2" TextWrapping="Wrap" Height="40" InputHint="Введите: URL" ContextMenu="{DynamicResource SharedContextMenu}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"/>
+                    <Metro:MetroTextBox x:Name="textBox3" TextWrapping="Wrap" Height="40" InputHint="Введите: RootElement" ContextMenu="{DynamicResource SharedContextMenu}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"/>
+                    <Metro:MetroTextBox x:Name="textBox4" TextWrapping="Wrap" Height="40" Text="Timestamp" IsReadOnly="True" ContextMenu="{DynamicResource SharedContextMenu}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"/>
+                    <ComboBox x:Name="SignsCb" Height="40" SelectedIndex="0" Foreground="#A5000000" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"/>
+                    <Metro:MetroButton x:Name="parsing" Content="Спарсить" Height="40" Click="parsing_Click" HorizontalAlignment="Left" Grid.Row="5" Grid.Column="0"/>
+                    <Metro:MetroButton x:Name="btnPodpis" Content="Подписать"  Height="40"  Click="btnPodpis_Click" HorizontalAlignment="Center" Grid.Row="5" Grid.Column="1"/>
+                    <Metro:MetroButton x:Name="btnSaveFile" Content="Сохранить" Height="40" Click="btnSaveFile_Click" HorizontalAlignment="Right" Grid.Row="5" Grid.Column="2"/>
+
+                    <Metro:MetroGroupBox Header="Настройки" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="300"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+                            <CheckBox x:Name="etalonsDownload" Content="Скачать эталоны" IsChecked="True" Click="etalonsDownload_Click" Grid.Row="0"/>
+                            <CheckBox x:Name="testPotrebitel" Content="Тестирование в качестве Поставщика" Click="testPotrebitel_Click" Grid.Row="1"/>
+                        </Grid>
+                    </Metro:MetroGroupBox>
+
+                    <Metro:MetroTextBlock x:Name="exist_request" TextWrapping="Wrap" FlowDirection="LeftToRight" TextAlignment="Left" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3"/>
+
+                    <Metro:MetroTabControl SelectedIndex="1" Grid.Row="0" Grid.Column="4" Grid.RowSpan="11">
+                        <Metro:MetroTabItem x:Name="GetRequestRequest_" Header="GetRequestRequest" IsSelected="True">
+                            <StackPanel>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="10"/>
+                                        <RowDefinition Height="300"/>
+                                        <RowDefinition Height="10"/>
+                                        <RowDefinition Height="300"/>
+                                    </Grid.RowDefinitions>
+                                    <Metro:MetroTextBox x:Name="textBox5" AcceptsReturn="True" TextWrapping="Wrap" ContextMenu="{DynamicResource SharedContextMenu}" ButtonTitle="Отправить запрос" ButtonClick="textBox5_ButtonClick" Grid.Row="1"/>
+                                    <Metro:MetroTextBox x:Name="textBox6" AcceptsReturn="True" TextWrapping="Wrap" TextChanged="textBox6Change" ContextMenu="{DynamicResource SharedContextMenu}" Grid.Row="3"/>
+                                </Grid>
+                            </StackPanel>
+                        </Metro:MetroTabItem>
+                        <Metro:MetroTabItem x:Name="AckRequest_" Header="AckRequest">
+                            <StackPanel>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="10"/>
+                                        <RowDefinition Height="300"/>
+                                        <RowDefinition Height="10"/>
+                                        <RowDefinition Height="300"/>
+                                    </Grid.RowDefinitions>
+                                    <Metro:MetroTextBox x:Name="textBox7" AcceptsReturn="True" TextWrapping="Wrap" ContextMenu="{DynamicResource SharedContextMenu}" ButtonTitle="Отправить запрос" ButtonClick="textBox7_ButtonClick" Grid.Row="1"/>
+                                    <Metro:MetroTextBox x:Name="textBox8" AcceptsReturn="True" TextWrapping="Wrap" ContextMenu="{DynamicResource SharedContextMenu}" Grid.Row="3"/>
+                                </Grid>
+                            </StackPanel>
+                        </Metro:MetroTabItem>
+                        <Metro:MetroTabItem x:Name="SendResponseRequest_" Header="SendResponseRequest">
+                            <StackPanel>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="10"/>
+                                        <RowDefinition Height="300"/>
+                                        <RowDefinition Height="10"/>
+                                        <RowDefinition Height="300"/>
+                                    </Grid.RowDefinitions>
+                                    <Metro:MetroTextBox x:Name="textBox9" AcceptsReturn="True" TextWrapping="Wrap" ContextMenu="{DynamicResource SharedContextMenu}" ButtonTitle="Отправить запрос" ButtonClick="textBox9_ButtonClick" Grid.Row="1"/>
+                                    <Metro:MetroTextBox x:Name="textBox10" AcceptsReturn="True" TextWrapping="Wrap" ContextMenu="{DynamicResource SharedContextMenu}" Grid.Row="3"/>
+                                </Grid>
+                            </StackPanel>
+                        </Metro:MetroTabItem>
+                        <Metro:MetroTabItem x:Name="SendRequestRequest_" Header="SendRequestRequest" Visibility="Collapsed">
+                            <StackPanel>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="10"/>
+                                        <RowDefinition Height="300"/>
+                                        <RowDefinition Height="10"/>
+                                        <RowDefinition Height="300"/>
+                                    </Grid.RowDefinitions>
+                                    <Metro:MetroTextBox x:Name="textBox11" AcceptsReturn="True" TextWrapping="Wrap" ContextMenu="{DynamicResource SharedContextMenu}" ButtonTitle="Отправить запрос" ButtonClick="textBox11_ButtonClick" Grid.Row="1"/>
+                                    <Metro:MetroTextBox x:Name="textBox12" AcceptsReturn="True" TextWrapping="Wrap" ContextMenu="{DynamicResource SharedContextMenu}" Grid.Row="3"/>
+                                </Grid>
+                            </StackPanel>
+                        </Metro:MetroTabItem>
+                        <Metro:MetroTabItem x:Name="GetResponseRequest_" Header="GetResponseRequest" Visibility="Collapsed">
+                            <StackPanel>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="10"/>
+                                        <RowDefinition Height="300"/>
+                                        <RowDefinition Height="10"/>
+                                        <RowDefinition Height="300"/>
+                                    </Grid.RowDefinitions>
+                                    <Metro:MetroTextBox x:Name="textBox13" AcceptsReturn="True" TextWrapping="Wrap" ContextMenu="{DynamicResource SharedContextMenu}" ButtonTitle="Отправить запрос" ButtonClick="textBox13_ButtonClick" Grid.Row="1"/>
+                                    <Metro:MetroTextBox x:Name="textBox14" AcceptsReturn="True" TextWrapping="Wrap" ContextMenu="{DynamicResource SharedContextMenu}" TextChanged="textBox14Change" Grid.Row="3"/>
+                                </Grid>
+                            </StackPanel>
+                        </Metro:MetroTabItem>
+                        <Metro:MetroTabItem x:Name="AckRequestO_" Header="AckRequest" Visibility="Collapsed">
+                            <StackPanel>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="10"/>
+                                        <RowDefinition Height="300"/>
+                                        <RowDefinition Height="10"/>
+                                        <RowDefinition Height="300"/>
+                                    </Grid.RowDefinitions>
+                                    <Metro:MetroTextBox x:Name="textBox15" AcceptsReturn="True" TextWrapping="Wrap" ContextMenu="{DynamicResource SharedContextMenu}" ButtonTitle="Отправить запрос" ButtonClick="textBox15_ButtonClick" Grid.Row="1"/>
+                                    <Metro:MetroTextBox x:Name="textBox16" AcceptsReturn="True" TextWrapping="Wrap" ContextMenu="{DynamicResource SharedContextMenu}" Grid.Row="3"/>
+                                </Grid>
+                            </StackPanel>
+                        </Metro:MetroTabItem>
+                    </Metro:MetroTabControl>
+                    <StackPanel Grid.Row="9" Grid.Column="0" VerticalAlignment="Bottom">
+                        <Grid Width="100" Height="120">
+                            <TextBlock x:Name="TextBlock1" Visibility="Collapsed" AllowDrop="True" FontSize="12" Foreground="#FF555555" TextWrapping="Wrap" TextAlignment="Center" Margin="5,45" Text="Закинуть эталоны"/>
+                            <Rectangle x:Name="Rectangle1" Visibility="Collapsed" AllowDrop="True" Fill="Transparent" RadiusX="20" RadiusY="20" StrokeDashArray="10" StrokeThickness="1" StrokeDashCap="Round" Stroke="#FF555555" Width="100" Height="120" DragEnter="Rectangle1_DragEnter" DragLeave="Rectangle1_DragLeave" Drop="Rectangle1_DragDrop">
+                                <Rectangle.Triggers>
+                                    <EventTrigger RoutedEvent="Rectangle.DragEnter">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation To="20" Duration="0:0:0.25" RepeatBehavior="Forever" By="2" Storyboard.TargetProperty="StrokeDashOffset" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="Border.MouseLeave">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Duration="0" Storyboard.TargetProperty="StrokeDashOffset"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="Border.DragLeave">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Duration="0" Storyboard.TargetProperty="StrokeDashOffset"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="Border.Drop">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Duration="0" Storyboard.TargetProperty="StrokeDashOffset"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </Rectangle.Triggers>
+                            </Rectangle>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Metro:MetroMenuTabItem>
+        <Metro:MetroMenuTabItem x:Name="Sign" Header="Подписание файлов" Icon="Resources/signatureIcon.png" IconMove="Resources/signatureIconMove.png" MinWidth="40" Width="200" IsSelected="True">
+            <Border Padding="10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="320"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="90"/>
+                        <RowDefinition Height="180"/>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <ComboBox x:Name="SignsCb1" Height="40" SelectedIndex="0" Foreground="#A5000000" Grid.Row="0" Grid.Column="0"/>
+                    <Metro:MetroButton x:Name="Signs" Content="Подписать" Height="40" Click="Signs_Click" Grid.Row="1" Grid.Column="0"/>
+                    <Metro:MetroGroupBox Header="Шаблоны для подписи" Grid.Row="2" Grid.Column="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="150"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+                            <CheckBox x:Name="GetRequestRequest1" Content="GetRequestRequest"  Click="RequestOption_Click" Grid.Row="0" Grid.Column="0"/>
+                            <CheckBox x:Name="SendRequestRequest1" Content="SendRequestRequest" Click="RequestOption_Click" Grid.Row="0" Grid.Column="1"/>
+                            <CheckBox x:Name="GetResponseRequest1" Content="GetResponseRequest" Click="RequestOption_Click" Grid.Row="1" Grid.Column="0"/>
+                            <CheckBox x:Name="SendResponseRequest1" Content="SendResponseRequest" Click="RequestOption_Click" Grid.Row="1" Grid.Column="1" />
+                            <CheckBox  x:Name="AckRequest1" Content="AckRequest" Click="RequestOption_Click" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
+                        </Grid>
+                    </Metro:MetroGroupBox>
+
+                    <StackPanel Grid.Column="2" Grid.RowSpan="6">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="320"/>
+                                <RowDefinition Height="10"/>
+                                <RowDefinition Height="320"/>
+                            </Grid.RowDefinitions>
+                            <Metro:MetroTextBox x:Name="textBox20"  AcceptsReturn="True" TextWrapping="Wrap" ContextMenu="{DynamicResource SharedContextMenu}"  ButtonTitle="Отправить запрос" ButtonClick="RequestButton_Click" Grid.Row="0"/>
+                            <Metro:MetroTextBox x:Name="textBox21"  AcceptsReturn="True" TextWrapping="Wrap" ContextMenu="{DynamicResource SharedContextMenu}" Grid.Row="2"/>
+                        </Grid>
+                    </StackPanel>
+
+                </Grid>
+            </Border>
+        </Metro:MetroMenuTabItem>
+        <Metro:MetroMenuTabItem x:Name="SettingsJCP" Header="Настройка - JPC" Icon="Resources/icon.png" IconMove="Resources/iconMove.png" MinWidth="40" IsSelected="True" >
+            <Border Padding="10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="106.66"/>
+                        <ColumnDefinition Width="106.66"/>
+                        <ColumnDefinition Width="106.66"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="210"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="215"/>
+                        <RowDefinition Height="15"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Metro:MetroButton x:Name="DownloadJCP" Content="JCP v2.0" Height="40" Click="DownloadJCP_Click" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0"/>
+                    <Metro:MetroButton x:Name="DownloadlJava86" Content="Java 86" Height="40" Click="DownloadlJava86_Click" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1"/>
+                    <Metro:MetroButton x:Name="DownloadlJava64" Content="Java 64" Height="40" Click="DownloadJava64_Click" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="2"/>
+                    <Metro:MetroButton x:Name="InstallJCP" Content="Install - JCP" Height="40" Click="InstallJCP_Click" Grid.Row="1" Grid.ColumnSpan="3" />
+                    <Metro:MetroButton x:Name="ControlPanel" Content="Control Panel - JCP" Height="40" Click="ControlPanel_Click" Grid.Row="2" Grid.ColumnSpan="3"  />
+                    <Metro:MetroButton x:Name="ResetTrial" Content="Reset trial - JCP" Height="40" Click="ResetTrial_Click" Grid.Row="3" Grid.ColumnSpan="3" />
+                    <Metro:MetroButton x:Name="Uninstall" Content="Uninstall Java - JCP"   Height="40" Click="Uninstall_Click" Grid.Row="4" Grid.ColumnSpan="3"  />
+                    <Metro:MetroTextBlock x:Name="MTBBB1"  Height="35" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="9" Grid.ColumnSpan="3" />
+                    <Metro:MetroProgressBar x:Name="MProgressBar" Height="15"  VerticalAlignment="Bottom" Background="#FF4B5F73" LargeChange="0" FontSize="0.01" Grid.Row="10" Grid.ColumnSpan="3"  Visibility="Collapsed"/>
+                    <Metro:MetroTextBlock x:Name="MTBBB2" Visibility="Collapsed"/>
+                    <Metro:MetroTextBlock x:Name="MTBBB3" Visibility="Collapsed"/>
+                    <Metro:MetroSwitch x:Name="SwitchJava" Content="Найти установленную Java" Width="210" Click="SwitchJava_Click" Grid.Row="0" Grid.Column="4"/>
+                    <ComboBox x:Name="JavaVersion" Height="40"  Foreground="#A5000000" SelectedIndex="0" Initialized="JavaVersion_Initialized" Grid.Row="0" Grid.Column="6"/>
+                    <Metro:MetroTextBox x:Name="textBox17" Height="600" AcceptsReturn="True"  TextWrapping="Wrap" HorizontalAlignment="Stretch" ContextMenu="{DynamicResource SharedContextMenu}" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="6" Grid.RowSpan="10"/>
+                </Grid>
+            </Border>
+        </Metro:MetroMenuTabItem>
+    </Metro:MetroMenuTabControl>
+</Metro:MetroWindow>
